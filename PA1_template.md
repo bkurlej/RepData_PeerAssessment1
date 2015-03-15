@@ -1,14 +1,10 @@
----
-title: "Reproducible Research: Peer Assessment 1"
-output: 
-  html_document:
-    keep_md: true
----
+# Reproducible Research: Peer Assessment 1
 
 
 ## Loading and preprocessing the data
 Extract and load data to df variable
-```{r Extract and load data}
+
+```r
 unzip("activity.zip")
 df <- read.csv("activity.csv")
 ```
@@ -16,59 +12,60 @@ df <- read.csv("activity.csv")
 ## What is mean total number of steps taken per day?
 
 First sum up all steps by days (missing values are omited)
-```{r}
+
+```r
 aggregatedTotalStepsByDay = aggregate(steps~date,data = df,sum)
 ```
 Then produce histogram
-```{r}
+
+```r
 hist(aggregatedTotalStepsByDay$steps,
      xlab = "Total Steps by day",
      main = "Histogram of Total Steps by day")
 ```
 
+![](./PA1_template_files/figure-html/unnamed-chunk-2-1.png) 
+
 And compute mean and median:
-```{r}
+
+```r
 meanOfTotalStepsByDay = mean(aggregatedTotalStepsByDay$steps)
 medianOfTotalStepsByDay = median(aggregatedTotalStepsByDay$steps)
 ```
 
-The total steps by day **mean** is `r meanOfTotalStepsByDay` and  
-the total steps by day **median** is `r medianOfTotalStepsByDay`
+The total steps by day **mean** is 1.0766189\times 10^{4} and  
+the total steps by day **median** is 10765
 
 ## What is the average daily activity pattern?
 
 First agregate all steps by interval (missing values are omited)
-```{r}
+
+```r
 aggregatedTotalStepsByInterval = aggregate(steps~interval,data = df,mean)
 ```
 
 Plot of result
-```{r}
+
+```r
 plot(aggregatedTotalStepsByInterval, 
      type="l", 
      main="Daily activity")
 ```
 
+![](./PA1_template_files/figure-html/unnamed-chunk-5-1.png) 
+
 Compute interval with maximum avarange steps:
-```{r}
+
+```r
 intervalWithMaxSteps = 
     aggregatedTotalStepsByInterval$interval[which.max(aggregatedTotalStepsByInterval$steps)]
 ```
 
-The interval with maximum avarange of steps is `r intervalWithMaxSteps`th 
+The interval with maximum avarange of steps is 835th 
 5min interval in the day.
-
 ## Imputing missing values
-
-Calculate number of rows wiht NA steps
-
-```{r}
-numberOfNA = sum(is.na(activityDataFrame$steps))
-```
-
-
-
-
+aa
+asdf
 
 ## Are there differences in activity patterns between weekdays and weekends?
-
+asdf
